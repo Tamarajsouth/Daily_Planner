@@ -1,9 +1,9 @@
-// variable to store and loop through scheduler
+// variable as an object to store and loop through hours
 var myDay = [
     {
         id: "0",
         hour: "08",
-        time: "09",
+        time: "08",
         meridiem: "am",
         reminder: "",
     },
@@ -77,6 +77,20 @@ var myDay = [
         meridiem: "pm",
         reminder: ""
     },
+    {
+        id: "11",
+        hour: "07",
+        time: "19",
+        meridiem: "pm",
+        reminder: ""
+    },
+    {
+        id: "12",
+        hour: "08",
+        time: "20",
+        meridiem: "pm",
+        reminder: ""
+    },
     
 ]
 
@@ -87,12 +101,12 @@ function getTodaysDate() {
 }
 
 // saves data to localStorage
-function saveReminders() {
+function saveToDos() {
     localStorage.setItem("myDay", JSON.stringify(myDay));
 }
 
 // sets any data in localStorage to the view
-function displayReminders() {
+function displayToDos() {
     myDay.forEach(function (_currentHour) {
         $(`#${_currentHour.id}`).val(_currentHour.reminder);
     })
@@ -106,8 +120,8 @@ function loadData() {
         myDay = storedDay;
     }
 
-    saveReminders();
-    displayReminders();
+    saveToDos();
+    displayToDos();
 }
 
 // loads header date
@@ -115,7 +129,7 @@ getTodaysDate();
 
 // creates the visuals for the scheduler body
 myDay.forEach(function(currentHour) {
-    // creates timeblocks row
+    // creates hour rows
     var hourRow = $("<form>").attr({
         "class": "row"
     });
@@ -133,30 +147,31 @@ myDay.forEach(function(currentHour) {
         .attr({
             "class": "col-md-9 description p-0"
         });
-    var planData = $("<textarea>");
-    hourPlan.append(planData);
-    planData.attr("id", currentHour.id);
+    var plannerData = $("<textarea>");
+    hourPlan.append(plannerData);
+    plannerData.attr("id", currentHour.id);
+    // creates color change based on current time
     if (currentHour.time < moment().format("HH")) {
-        planData.attr ({
+        plannerData.attr ({
             "class": "past", 
         })
     } else if (currentHour.time === moment().format("HH")) {
-        planData.attr({
+        plannerData.attr({
             "class": "present"
         })
     } else if (currentHour.time > moment().format("HH")) {
-        planData.attr({
+        plannerData.attr({
             "class": "future"
         })
     }
     // creates save button
     var saveButton = $("<i class='fas fa-save fa-lg'></i>")
-    var savePlan = $("<button>")
+    var savePlannerData = $("<button>")
         .attr({
             "class": "col-md-1 saveBtn"
     });
-    savePlan.append(saveButton);
-    hourRow.append(hourField, hourPlan, savePlan);
+    savePlannerData.append(saveButton);
+    hourRow.append(hourField, hourPlan, savePlannerData);
 })
 
 // loads any existing localstorage data after content created
@@ -169,6 +184,6 @@ $(".saveBtn").on("click", function(event) {
     var saveIndex = $(this).siblings(".description").children(".future").attr("id");
     myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
     console.log(saveIndex);
-    saveReminders();
-    displayReminders();
+    saveToDos();
+    displayToDos();
 })

@@ -1,14 +1,13 @@
 body {
-    font-family: 'Baloo Thambi 2';
-    font-size: 16px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 16px;
   }
   
   textarea{
     background: transparent;
     border: none;
-    resize: none;
     color: #000000;
-    border-left: 1px solid black;
+    border-left: 1px solid rgb(255, 255, 255);
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -16,52 +15,58 @@ body {
   
   .jumbotron {
     text-align: center;
-    background-color: transparent;
+    background-color: #bbe4d1;
     color: black;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(255, 255, 255);
   }
   
   .time-block{
     text-align: center;
-    border-radius: 15px;
+    border-top: 1px solid #ffffff;
+
   }
   
   .row {
     height: 80px;
-    border-top: 1px solid white;;
+    border: 2px;
+    border-top: 1px solid #ffffff;
   }
   
   .hour {
-    background-color: #ffffff;
+    background-color: #9ad4b5;
     color: #000000;
-    border-top: 1px dashed #000000;
+    border-top: 1px solid #ffffff;
   }
   
   .past {
-    background-color: #727171;
+    background-color: #94abc5;
     color: white;
+    border-top: 1px solid #ffffff;
+
   }
   
   .present {
-    background-color: #00ff55;
+    background-color: #a2a6d8;
     color: black;
+    border-top: 1px solid #ffffff;
+
   }
   
   .future {
-    background-color: #bedd77;
+    background-color: #b4d8dd;
     color: black;
+    border-top: 1px solid #ffffff;
+
   }
   
   .saveBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #06AED5;
+    border-left: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+    background-color: rgb(200, 167, 216);
     color: white;
   }
   
   .saveBtn:hover {
     font-size: 25px;
-    transition: all .3s ease-in-out;
     cursor: pointer;
   }
